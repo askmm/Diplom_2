@@ -11,15 +11,15 @@ public class UserTest extends CommonTest{
 
     @Test
     public void createUserSuccess(){
-        ValidatableResponse response =  userClient.createUser(randomUser());
+        ValidatableResponse response =  userClient.createUser(user);
         jwt = userCheck.createdSuccessfully(response);
     }
 
     @Test
     public void createUserDuplicateFail(){
-        ValidatableResponse response = createUserAndFillJWT(user);
+        createUserAndFillJWT(user);
 
-        response = userClient.createUser(user);
+        ValidatableResponse response = userClient.createUser(user);
         userCheck.creationFailed(response);
     }
 
